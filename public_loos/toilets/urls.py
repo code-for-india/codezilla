@@ -7,5 +7,6 @@ urlpatterns = [
 #    url(r'^signup/$', login_forbidden(views.userSignup), name='user_signup'),
 #    url(r'^signin/$', login_forbidden(views.userLogin), name='user_signin'),
     url(r'^$', appHomePage, name='app_homepage'),
+    url(r'^visit/$', visitToilet, name='visit_toilet'),
 
 ]

@@ -12,10 +12,10 @@ class Profile(models.Model):
     )
 
     user = models.ForeignKey(User)
-    email = models.EmailField(blank=False, null=False)
-    name = models.CharField(max_length=255, blank=False, null=False)
+    email = models.EmailField()
+    name = models.CharField(max_length=255)
     contact_no = models.CharField(max_length=15,unique=True)
-    device_id = models.CharField(max_length=255, blank=False, null=False)
+    device_id = models.CharField(max_length=255,null=True,blank=True)
     profile_photo=models.ImageField(upload_to='users/profile')
     profile_type = models.IntegerField(choices=PROFILE_TYPE_CHOICES, default=1)
     last_visited = models.DateTimeField(auto_now=True)
@@ -35,15 +35,31 @@ TOILET_TYPES = (
     )
 class Toilets(models.Model):
     area=models.TextField(max_length=255)
-    lat=models.CharField(max_length=12)
-    lon=models.TextField()
+    lat=models.FloatField(default=0.0)
+    lon=models.FloatField(default=0.0)
     toilet_type=models.IntegerField(choices=TOILET_TYPES)
-    visits=models.IntegerField(default=0)
+    total_visits=models.IntegerField(default=0)
+    current_visits=models.IntegerField(default=0)
     last_equipment_check=models.DateTimeField()
     star=models.IntegerField(default=5)
     def location_one_line(self):
         return str(self.area)+","+str(self.lat)+","+str(self.lon)
 
+    def visitor_current_count(self):
+        return self.current_visits
+
+    def visitor_total_count(self):
+        return self.current_visits
+
+    def reset_current_count(self):
+        self.current_visits=0
+        self.save()
+        return True
+
+    def new_visitor(self):
+        self.current_visits+=1
+        self.save()
+        return True
 
 class Photo(models.Model):
     user=models.ForeignKey(User)
@@ -51,9 +67,8 @@ class Photo(models.Model):
     toilet=models.ForeignKey(Toilets, related_name="photos")
     time=models.DateTimeField(auto_now_add=True)
     comment=models.TextField(max_length=500)
-    lat=models.CharField(max_length=30)
-    lon=models.CharField(max_length=30)
-
+    lat=models.FloatField(default=0.0)
+    lon=models.FloatField(default=0.0)
 
 class ComplaintText(models.Model):
     text=models.TextField(max_length=500)
@@ -71,3 +86,4 @@ def updateStar(sender, instance,**kwargs):
     obj.save()
     return True
 post_save.connect(updateStar, sender=Complaint)
+
