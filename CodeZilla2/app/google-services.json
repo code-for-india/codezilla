@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_id": "codezilla-hackathon",
+    "project_number": "133756650181",
+    "name": "CodeZilla Hackathon"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133756650181:android:e3fd5e87df6177c9",
+        "client_id": "android:cfahackathon.codezilla.com.codezilla",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "cfahackathon.codezilla.com.codezilla",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133756650181-upq1561lbg34bjb67ime1rp8ao0bvehh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cfahackathon.codezilla.com.codezilla",
+            "certificate_hash": "F20E2330098FD9C4447FF05B200B170073F221E8"
+          }
+        },
+        {
+          "client_id": "133756650181-fjgr7obeoro9btoppblhc02b7kej39tg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 2,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
