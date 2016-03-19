@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CodeZilla</string>
+    <string name="title_activity_main">User End</string>
+
+    <string name="z_open_drawer">opendrawervalueconstatnt</string>
+    <string name="z_close_drawer">closedrawervaluecontant</string>
+
+</resources>
